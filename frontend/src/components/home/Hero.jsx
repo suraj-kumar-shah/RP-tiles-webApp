@@ -18,7 +18,7 @@ const BACKGROUND_IMAGES = [
   },
 ];
 
-const INTERVAL_MS = 6000;
+const INTERVAL_MS = 2000;
 
 const SCRIM =
   "linear-gradient(90deg, rgba(10,10,10,0.86) 0%, rgba(10,10,10,0.58) 42%, rgba(10,10,10,0.18) 75%, rgba(10,10,10,0.02) 100%)";
@@ -42,7 +42,7 @@ export default function Hero() {
           return (
             <div
               key={item.url}
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
                 isActive ? "opacity-100" : "opacity-0"
               }`}
             >
