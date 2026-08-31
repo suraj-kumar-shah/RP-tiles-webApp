@@ -8,41 +8,41 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-stone-200 bg-stone-900 text-stone-300">
-      <div className="container-page grid grid-cols-1 gap-10 py-16 sm:grid-cols-2 lg:grid-cols-4">
+    <footer className="border-t border-stone-800 bg-[#181614] text-stone-300">
+      <div className="container-page grid grid-cols-1 gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4 md:py-18">
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-2.5">
             <img
               src={site.logo}
               alt={site.fullName}
-              className="h-11 w-11 shrink-0 object-contain"
+              className="h-10 w-10 shrink-0 object-contain"
             />
-            <span className="font-display text-xl font-semibold text-cream">
+            <span className="font-display text-xl font-semibold text-white">
               {site.name}
             </span>
           </div>
           <p className="text-sm leading-relaxed text-stone-400">
             {site.description}
           </p>
-          <div className="flex items-center gap-3 pt-1">
+          <div className="flex items-center gap-2.5 pt-1">
             <a
               href={site.social.instagram}
               aria-label="Instagram"
-              className="rounded-full border border-stone-700 p-2 text-stone-300 transition-colors hover:border-brass-400 hover:text-brass-400"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-stone-700 text-stone-300 transition-colors hover:border-brass-400 hover:text-brass-400 hover:bg-stone-800"
             >
               <InstagramIcon size={16} />
             </a>
             <a
               href={site.social.facebook}
               aria-label="Facebook"
-              className="rounded-full border border-stone-700 p-2 text-stone-300 transition-colors hover:border-brass-400 hover:text-brass-400"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-stone-700 text-stone-300 transition-colors hover:border-brass-400 hover:text-brass-400 hover:bg-stone-800"
             >
               <FacebookIcon size={16} />
             </a>
             <a
               href={site.social.youtube}
               aria-label="YouTube"
-              className="rounded-full border border-stone-700 p-2 text-stone-300 transition-colors hover:border-brass-400 hover:text-brass-400"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-stone-700 text-stone-300 transition-colors hover:border-brass-400 hover:text-brass-400 hover:bg-stone-800"
             >
               <YoutubeIcon size={16} />
             </a>
@@ -50,7 +50,7 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col gap-3">
-          <h4 className="text-sm font-semibold uppercase tracking-wider text-cream">
+          <h4 className="text-xs font-semibold uppercase tracking-wider text-brass-300">
             Categories
           </h4>
           <ul className="flex flex-col gap-2.5 text-sm">
@@ -58,7 +58,7 @@ export default function Footer() {
               <li key={cat.id}>
                 <Link
                   to={`/category/${cat.id}`}
-                  className="text-stone-400 transition-colors hover:text-cream"
+                  className="text-stone-400 transition-colors hover:text-white"
                 >
                   {cat.name}
                 </Link>
@@ -68,37 +68,37 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col gap-3">
-          <h4 className="text-sm font-semibold uppercase tracking-wider text-cream">
+          <h4 className="text-xs font-semibold uppercase tracking-wider text-brass-300">
             Quick Links
           </h4>
           <ul className="flex flex-col gap-2.5 text-sm">
             <li>
-              <Link to="/products" className="text-stone-400 transition-colors hover:text-cream">
+              <Link to="/products" className="text-stone-400 transition-colors hover:text-white">
                 All Products
               </Link>
             </li>
             <li>
-              <Link to="/about" className="text-stone-400 transition-colors hover:text-cream">
+              <Link to="/about" className="text-stone-400 transition-colors hover:text-white">
                 About Us
               </Link>
             </li>
             <li>
-              <Link to="/quote" className="text-stone-400 transition-colors hover:text-cream">
+              <Link to="/quote" className="text-stone-400 transition-colors hover:text-white">
                 Request a Quote
               </Link>
             </li>
             <li>
-              <Link to="/social" className="text-stone-400 transition-colors hover:text-cream">
+              <Link to="/social" className="text-stone-400 transition-colors hover:text-white">
                 Instagram &amp; Reels
               </Link>
             </li>
             <li>
-              <Link to="/contact" className="text-stone-400 transition-colors hover:text-cream">
+              <Link to="/contact" className="text-stone-400 transition-colors hover:text-white">
                 Contact
               </Link>
             </li>
             <li>
-              <Link to="/cart" className="text-stone-400 transition-colors hover:text-cream">
+              <Link to="/cart" className="text-stone-400 transition-colors hover:text-white">
                 Cart
               </Link>
             </li>
@@ -106,7 +106,7 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col gap-3">
-          <h4 className="text-sm font-semibold uppercase tracking-wider text-cream">
+          <h4 className="text-xs font-semibold uppercase tracking-wider text-brass-300">
             Get In Touch
           </h4>
           <ul className="flex flex-col gap-3 text-sm text-stone-400">
@@ -116,7 +116,7 @@ export default function Footer() {
                 href={site.googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-colors hover:text-cream"
+                className="transition-colors hover:text-white"
               >
                 {site.address.line1}, {site.address.line2}, {site.address.city},{" "}
                 {site.address.state} {site.address.pincode}
@@ -125,13 +125,13 @@ export default function Footer() {
             <li className="flex items-center gap-2.5">
               <Phone size={16} strokeWidth={1.75} className="shrink-0 text-brass-400" />
               <div className="flex flex-wrap gap-x-1.5">
-                <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="hover:text-cream">
+                <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="hover:text-white">
                   {site.phone}
                 </a>
                 {site.phoneSecondary && (
                   <>
                     <span>,</span>
-                    <a href={`tel:${site.phoneSecondary.replace(/\s/g, "")}`} className="hover:text-cream">
+                    <a href={`tel:${site.phoneSecondary.replace(/\s/g, "")}`} className="hover:text-white">
                       {site.phoneSecondary}
                     </a>
                   </>
@@ -140,7 +140,7 @@ export default function Footer() {
             </li>
             <li className="flex items-center gap-2.5">
               <Mail size={16} strokeWidth={1.75} className="shrink-0 text-brass-400" />
-              <a href={`mailto:${site.email}`} className="hover:text-cream">
+              <a href={`mailto:${site.email}`} className="hover:text-white">
                 {site.email}
               </a>
             </li>
