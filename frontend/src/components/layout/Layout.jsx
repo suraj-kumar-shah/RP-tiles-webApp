@@ -1,0 +1,24 @@
+import { Outlet, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import Navbar from "./Navbar.jsx";
+import Footer from "./Footer.jsx";
+import WhatsAppButton from "./WhatsAppButton.jsx";
+
+export default function Layout() {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" in window ? "instant" : "auto" });
+  }, [location.pathname]);
+
+  return (
+    <div className="flex min-h-dvh flex-col bg-cream">
+      <Navbar />
+      <main className="flex-1">
+        <Outlet />
+      </main>
+      <Footer />
+      <WhatsAppButton />
+    </div>
+  );
+}
