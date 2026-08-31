@@ -80,7 +80,7 @@ export default function FAQSection() {
                 </button>
 
                 {isOpen && (
-                  <div className="border-t border-stone-100 bg-stone-50/40 px-5 py-4 sm:px-6">
+                  <div className="border-t border-stone-100 bg-white px-5 py-4 sm:px-6">
                     <p className="text-sm leading-relaxed text-ink-soft sm:text-[15px]">
                       {faq.answer}
                     </p>

@@ -32,7 +32,7 @@ const galleryImages = [
 
 export default function ShowroomGallery() {
   return (
-    <section className="bg-[#f9f8f6] pt-8 pb-16 md:pt-12 md:pb-24">
+    <section className="bg-white pt-8 pb-16 md:pt-12 md:pb-24">
       <div className="container-page">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">

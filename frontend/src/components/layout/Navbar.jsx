@@ -63,7 +63,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b bg-cream/95 backdrop-blur transition-shadow ${
+      className={`sticky top-0 z-50 border-b bg-white/95 backdrop-blur transition-shadow ${
         scrolled ? "border-stone-200 shadow-card" : "border-transparent"
       }`}
     >
@@ -153,7 +153,7 @@ export default function Navbar() {
       </div>
 
       {searchOpen && (
-        <div className="hidden border-t border-stone-200 bg-cream sm:block">
+        <div className="hidden border-t border-stone-200 bg-white sm:block">
           <form onSubmit={submitSearch} className="container-page py-3">
             <SearchBar value={searchValue} onChange={setSearchValue} autoFocus />
           </form>
@@ -207,7 +207,7 @@ export default function Navbar() {
               </div>
 
               {/* Scrollable Navigation List */}
-              <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain bg-[#faf8f5] p-3.5">
+              <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain bg-white p-3.5">
                 <nav className="space-y-1.5">
                   {navLinks.map((link) =>
                     link.isExternal ? (

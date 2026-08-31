@@ -59,12 +59,12 @@ export default function Hero() {
       </div>
 
       <div className="container-page relative z-20 flex min-h-[380px] flex-col justify-center py-12 sm:min-h-[420px] sm:py-16 md:max-w-xl lg:min-h-[460px] lg:py-20">
-        <h1 className="font-display text-[1.95rem] font-semibold leading-[1.18] tracking-tight text-white drop-shadow-sm text-balance sm:text-4xl sm:leading-[1.15] lg:text-[2.85rem]">
+        <h1 className="font-display text-[2.1rem] font-semibold leading-[1.15] tracking-tight text-white drop-shadow-sm text-balance sm:text-4xl sm:leading-[1.15] lg:text-[2.85rem]">
           Luxury Tiles &amp; Natural Marble Slabs
         </h1>
 
-        <p className="mt-3 max-w-md text-[13.5px] font-normal leading-relaxed text-white drop-shadow-sm sm:text-base sm:leading-relaxed">
-          Curated collection of natural marble slabs, designer tiles, and architectural fittings for modern spaces.
+        <p className="mt-3 max-w-lg text-sm font-normal leading-relaxed text-white drop-shadow-sm sm:text-base sm:leading-relaxed">
+          Araria&apos;s premier destination for natural marble slabs, designer tiles, and architectural fittings.
         </p>
 
         <div className="mt-8 flex items-center gap-2 sm:mt-10">
@@ -75,7 +75,7 @@ export default function Hero() {
               onClick={() => setCurrentIdx(index)}
               aria-label={`Go to slide ${index + 1}`}
               className={`h-1.5 rounded-full transition-all duration-300 ${
-                index === currentIdx ? "w-6 bg-cream" : "w-2 bg-cream/40 hover:bg-cream/70"
+                index === currentIdx ? "w-6 bg-white" : "w-2 bg-white/40 hover:bg-white/70"
               }`}
             />
           ))}
