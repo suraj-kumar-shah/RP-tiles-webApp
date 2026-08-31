@@ -47,35 +47,36 @@ export default function Hero() {
               <img
                 src={item.url}
                 alt={item.alt}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover object-center"
                 loading={index === 0 ? "eager" : "lazy"}
               />
             </div>
           );
         })}
-        <div className="absolute inset-0" style={{ backgroundImage: SCRIM }} />
-        {/* Mobile enhanced contrast vignette */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/50 sm:hidden" />
+        {/* Desktop Gradient Scrim */}
+        <div className="hidden sm:block absolute inset-0" style={{ backgroundImage: SCRIM }} />
+        {/* Mobile Balanced Backdrop Overlay for optimal readability and background visibility */}
+        <div className="block sm:hidden absolute inset-0 bg-gradient-to-t from-black/75 via-black/40 to-black/45" />
       </div>
 
-      <div className="container-page relative z-20 flex min-h-[380px] flex-col justify-center py-12 sm:min-h-[420px] sm:py-16 md:max-w-xl lg:min-h-[460px] lg:py-20">
-        <h1 className="font-display text-[2.1rem] font-semibold leading-[1.15] tracking-tight text-white drop-shadow-sm text-balance sm:text-4xl sm:leading-[1.15] lg:text-[2.85rem]">
+      <div className="container-page relative z-20 flex min-h-[300px] flex-col justify-center py-8 sm:min-h-[400px] sm:py-16 md:max-w-xl lg:min-h-[450px] lg:py-20">
+        <h1 className="font-display text-[1.65rem] font-medium leading-[1.2] tracking-tight text-white drop-shadow sm:text-3xl sm:leading-[1.18] lg:text-[2.75rem]">
           Luxury Tiles &amp; Natural Marble Slabs
         </h1>
 
-        <p className="mt-3 max-w-lg text-sm font-normal leading-relaxed text-white drop-shadow-sm sm:text-base sm:leading-relaxed">
+        <p className="mt-2 max-w-md text-[13px] font-normal leading-relaxed text-stone-100 drop-shadow sm:mt-3 sm:max-w-lg sm:text-base">
           Araria&apos;s premier destination for natural marble slabs, designer tiles, and architectural fittings.
         </p>
 
-        <div className="mt-8 flex items-center gap-2 sm:mt-10">
+        <div className="mt-5 flex items-center gap-1.5 sm:mt-8 sm:gap-2">
           {BACKGROUND_IMAGES.map((_, index) => (
             <button
               key={index}
               type="button"
               onClick={() => setCurrentIdx(index)}
               aria-label={`Go to slide ${index + 1}`}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                index === currentIdx ? "w-6 bg-white" : "w-2 bg-white/40 hover:bg-white/70"
+              className={`h-1 rounded-full transition-all duration-300 sm:h-1.5 ${
+                index === currentIdx ? "w-6 bg-white sm:w-7" : "w-1.5 bg-white/40 hover:bg-white/70 sm:w-2"
               }`}
             />
           ))}
