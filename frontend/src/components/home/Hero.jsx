@@ -55,39 +55,41 @@ export default function Hero() {
           );
         })}
         <div className="absolute inset-0" style={{ backgroundImage: SCRIM }} />
+        {/* Mobile enhanced contrast vignette */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/50 sm:hidden" />
       </div>
 
-      <div className="container-page relative z-20 flex min-h-[380px] flex-col justify-center py-14 sm:min-h-[430px] sm:py-16 md:max-w-xl lg:min-h-[480px] lg:py-20">
-        <h1 className="font-display text-3xl font-semibold leading-[1.15] tracking-tight text-cream text-balance sm:text-4xl lg:text-[2.85rem]">
+      <div className="container-page relative z-20 flex min-h-[390px] flex-col justify-center py-12 sm:min-h-[430px] sm:py-16 md:max-w-xl lg:min-h-[480px] lg:py-20">
+        <h1 className="font-display text-[1.95rem] font-semibold leading-[1.18] tracking-tight text-white drop-shadow-sm text-balance sm:text-4xl sm:leading-[1.15] sm:text-cream sm:drop-shadow-none lg:text-[2.85rem]">
           Luxury Tiles &amp; Natural Marble Slabs
         </h1>
 
-        <p className="mt-3 max-w-md text-sm leading-relaxed text-cream/80 sm:text-base">
+        <p className="mt-2.5 max-w-md text-[13.5px] leading-relaxed text-stone-200/90 drop-shadow-sm sm:mt-3 sm:text-base sm:text-cream/80 sm:drop-shadow-none">
           Curated collection of natural marble slabs, designer tiles, and architectural fittings for modern spaces.
         </p>
 
-        <div className="mt-7 flex flex-wrap items-center gap-3">
+        <div className="mt-6 flex flex-wrap items-center gap-2.5 sm:mt-7 sm:gap-3">
           <Link
             to="/products"
-            className="group inline-flex items-center justify-center gap-2 rounded-md bg-white px-5 py-2.5 text-sm font-medium tracking-wide text-stone-900 shadow-sm transition-all duration-200 hover:bg-stone-100"
+            className="group inline-flex items-center justify-center gap-2 rounded-lg bg-white px-4.5 py-2.5 text-xs font-semibold tracking-wide text-stone-900 shadow-md transition-all duration-200 hover:bg-stone-100 sm:rounded-md sm:px-5 sm:text-sm sm:font-medium sm:shadow-sm"
           >
             <span>Explore Collection</span>
             <ArrowRight
-              size={15}
+              size={14}
               strokeWidth={2}
-              className="transition-transform duration-200 group-hover:translate-x-0.5"
+              className="transition-transform duration-200 group-hover:translate-x-0.5 sm:w-[15px] sm:h-[15px]"
             />
           </Link>
 
           <Link
             to="/quote"
-            className="inline-flex items-center justify-center rounded-md border border-white/40 bg-black/20 px-5 py-2.5 text-sm font-medium tracking-wide text-white backdrop-blur-sm transition-all duration-200 hover:border-white hover:bg-white/10"
+            className="inline-flex items-center justify-center rounded-lg border border-white/40 bg-black/30 px-4.5 py-2.5 text-xs font-semibold tracking-wide text-white backdrop-blur-md transition-all duration-200 hover:border-white hover:bg-white/10 sm:rounded-md sm:border-white/40 sm:bg-black/20 sm:px-5 sm:text-sm sm:font-medium sm:backdrop-blur-sm"
           >
             Request a Quote
           </Link>
         </div>
 
-        <div className="mt-10 flex items-center gap-2">
+        <div className="mt-8 flex items-center gap-2 sm:mt-10">
           {BACKGROUND_IMAGES.map((_, index) => (
             <button
               key={index}

@@ -36,7 +36,9 @@ export default function Button({
   children,
   ...props
 }) {
-  const classes = `inline-flex items-center justify-center gap-2 rounded-sm font-medium tracking-wide transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-50 disabled:pointer-events-none ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
+  const hasDisplay = /\b(hidden|inline-flex|flex|inline-block|block)\b/.test(className);
+  const baseDisplay = hasDisplay ? "" : "inline-flex";
+  const classes = `${baseDisplay} items-center justify-center gap-2 rounded-sm font-medium tracking-wide transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-50 disabled:pointer-events-none ${variantClasses[variant]} ${sizeClasses[size]} ${className}`.trim();
 
   const content = (
     <>

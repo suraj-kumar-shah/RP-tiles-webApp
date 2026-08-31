@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Heart, Menu, Search, ShoppingBag, X } from "lucide-react";
 import Button from "../ui/Button.jsx";
@@ -36,6 +37,17 @@ export default function Navbar() {
     setSearchOpen(false);
   }, [navigate]);
 
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
+
   const submitSearch = (e) => {
     e.preventDefault();
     if (!searchValue.trim()) return;
@@ -56,13 +68,13 @@ export default function Navbar() {
       }`}
     >
       <div className="container-page flex h-16 items-center justify-between gap-4 md:h-20">
-        <NavLink to="/" className="flex shrink-0 items-center gap-2.5">
+        <NavLink to="/" className="flex shrink-0 items-center gap-2 sm:gap-2.5">
           <img
             src={site.logo}
             alt={site.fullName}
-            className="h-11 w-11 shrink-0 object-contain md:h-12 md:w-12"
+            className="h-9 w-9 shrink-0 object-contain sm:h-11 sm:w-11 md:h-12 md:w-12"
           />
-          <span className="font-display text-xl font-semibold tracking-wide text-ink md:text-2xl">
+          <span className="font-display text-lg font-semibold tracking-tight text-ink sm:text-xl md:text-2xl sm:tracking-wide">
             {site.name}
           </span>
         </NavLink>
@@ -87,7 +99,7 @@ export default function Navbar() {
           )}
         </nav>
 
-        <div className="flex items-center gap-1 sm:gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2">
           <button
             type="button"
             aria-label="Search"
@@ -113,9 +125,9 @@ export default function Navbar() {
           <NavLink
             to="/cart"
             aria-label="Cart"
-            className="relative rounded-full p-2.5 text-ink-soft transition-colors hover:bg-stone-100 hover:text-ink"
+            className="relative rounded-full p-2 text-ink-soft transition-colors hover:bg-stone-100 hover:text-ink sm:p-2.5"
           >
-            <ShoppingBag size={19} strokeWidth={1.75} />
+            <ShoppingBag size={20} strokeWidth={1.75} />
             {itemCount > 0 && (
               <span className="absolute -right-0.5 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-brass-500 text-[10px] font-semibold text-white">
                 {itemCount}
@@ -123,17 +135,19 @@ export default function Navbar() {
             )}
           </NavLink>
 
-          <Button to="/quote" variant="accent" size="sm" className="hidden lg:inline-flex">
-            Get Quote
-          </Button>
+          <div className="hidden lg:block">
+            <Button to="/quote" variant="accent" size="sm">
+              Get Quote
+            </Button>
+          </div>
 
           <button
             type="button"
             aria-label="Open menu"
             onClick={() => setMobileOpen(true)}
-            className="rounded-full p-2.5 text-ink-soft transition-colors hover:bg-stone-100 hover:text-ink lg:hidden"
+            className="rounded-full p-2 text-ink-soft transition-colors hover:bg-stone-100 hover:text-ink sm:p-2.5 lg:hidden"
           >
-            <Menu size={21} strokeWidth={1.75} />
+            <Menu size={22} strokeWidth={1.75} />
           </button>
         </div>
       </div>
@@ -146,96 +160,147 @@ export default function Navbar() {
         </div>
       )}
 
-      {mobileOpen && (
-        <div className="fixed inset-0 z-[60] lg:hidden">
-          <div
-            className="absolute inset-0 bg-ink/50"
-            onClick={() => setMobileOpen(false)}
-            aria-hidden="true"
-          />
-          <div className="absolute inset-y-0 right-0 flex w-full max-w-sm flex-col bg-cream shadow-card-hover">
-            <div className="flex items-center justify-between border-b border-stone-200 px-5 py-4">
-              <span className="font-display text-lg font-semibold text-ink">Menu</span>
-              <button
-                type="button"
-                aria-label="Close menu"
-                onClick={() => setMobileOpen(false)}
-                className="rounded-full p-2 text-ink-soft hover:bg-stone-100 hover:text-ink"
-              >
-                <X size={20} strokeWidth={1.75} />
-              </button>
-            </div>
+      {mobileOpen &&
+        createPortal(
+          <div className="fixed inset-0 z-[999] flex justify-end lg:hidden">
+            {/* Backdrop Overlay */}
+            <div
+              className="fixed inset-0 bg-stone-950/70 backdrop-blur-sm transition-opacity"
+              onClick={() => setMobileOpen(false)}
+              aria-hidden="true"
+            />
 
-            <form onSubmit={submitSearch} className="px-5 pt-4">
-              <SearchBar value={searchValue} onChange={setSearchValue} />
-            </form>
+            {/* Solid Full-Height Slide Drawer */}
+            <div className="relative z-10 flex h-full h-[100dvh] w-[85vw] max-w-[340px] flex-col bg-white shadow-2xl">
+              {/* Drawer Header */}
+              <div className="flex h-16 shrink-0 items-center justify-between border-b border-stone-200 bg-white px-5">
+                <div className="flex items-center gap-2.5">
+                  <img
+                    src={site.logo}
+                    alt={site.fullName}
+                    className="h-9 w-9 object-contain"
+                  />
+                  <span className="font-display text-lg font-semibold text-ink">
+                    {site.name}
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  aria-label="Close menu"
+                  onClick={() => setMobileOpen(false)}
+                  className="flex h-9 w-9 items-center justify-center rounded-full text-stone-600 hover:bg-stone-100 hover:text-ink"
+                >
+                  <X size={20} strokeWidth={2} />
+                </button>
+              </div>
 
-            <nav className="flex flex-col gap-1 px-5 py-4">
-              {navLinks.map((link) =>
-                link.isExternal ? (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-between rounded-sm px-3 py-3 text-base font-medium text-ink-soft transition-colors hover:bg-stone-100 hover:text-ink"
-                  >
-                    <span>{link.label}</span>
-                    <span className="text-xs font-semibold text-brass-700">Open Maps ↗</span>
-                  </a>
-                ) : (
+              {/* Search Input */}
+              <div className="shrink-0 border-b border-stone-100 bg-white p-3.5">
+                <form onSubmit={submitSearch}>
+                  <SearchBar
+                    value={searchValue}
+                    onChange={setSearchValue}
+                    placeholder="Search products..."
+                    className="rounded-lg py-2"
+                  />
+                </form>
+              </div>
+
+              {/* Scrollable Navigation List */}
+              <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain bg-[#faf8f5] p-3.5">
+                <nav className="space-y-1.5">
+                  {navLinks.map((link) =>
+                    link.isExternal ? (
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => setMobileOpen(false)}
+                        className="flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium text-ink transition-colors hover:bg-stone-200/70"
+                      >
+                        <span>{link.label}</span>
+                        <span className="text-xs font-semibold text-brass-700">Open Maps ↗</span>
+                      </a>
+                    ) : (
+                      <NavLink
+                        key={link.to}
+                        to={link.to}
+                        end={link.end}
+                        onClick={() => setMobileOpen(false)}
+                        className={({ isActive }) =>
+                          `flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium transition-colors ${
+                            isActive
+                              ? "bg-white font-semibold text-ink shadow-sm border border-stone-200"
+                              : "text-ink-soft hover:bg-stone-200/70 hover:text-ink"
+                          }`
+                        }
+                      >
+                        {link.label}
+                      </NavLink>
+                    )
+                  )}
+
+                  <div className="my-2 border-t border-stone-200/80" />
+
                   <NavLink
-                    key={link.to}
-                    to={link.to}
-                    end={link.end}
-                    className={({ isActive }) =>
-                      `rounded-sm px-3 py-3 text-base font-medium transition-colors ${
-                        isActive ? "bg-stone-100 text-ink" : "text-ink-soft hover:bg-stone-100 hover:text-ink"
-                      }`
-                    }
+                    to="/wishlist"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium text-ink-soft transition-colors hover:bg-stone-200/70 hover:text-ink"
                   >
-                    {link.label}
+                    <span>Wishlist</span>
+                    {wishlistItems.length > 0 && (
+                      <span className="rounded-full bg-brass-500 px-2 py-0.5 text-xs font-semibold text-white">
+                        {wishlistItems.length}
+                      </span>
+                    )}
                   </NavLink>
-                )
-              )}
-              <NavLink
-                to="/wishlist"
-                className="flex items-center justify-between rounded-sm px-3 py-3 text-base font-medium text-ink-soft transition-colors hover:bg-stone-100 hover:text-ink"
-              >
-                <span>Wishlist</span>
-                {wishlistItems.length > 0 && (
-                  <span className="rounded-full bg-brass-500 px-2 py-0.5 text-xs font-semibold text-white">
-                    {wishlistItems.length}
-                  </span>
-                )}
-              </NavLink>
-              <NavLink
-                to="/cart"
-                className="flex items-center justify-between rounded-sm px-3 py-3 text-base font-medium text-ink-soft transition-colors hover:bg-stone-100 hover:text-ink"
-              >
-                <span>Cart</span>
-                {itemCount > 0 && (
-                  <span className="rounded-full bg-brass-500 px-2 py-0.5 text-xs font-semibold text-white">
-                    {itemCount}
-                  </span>
-                )}
-              </NavLink>
-            </nav>
 
-            <div className="mt-auto flex flex-col gap-3 border-t border-stone-200 px-5 py-5">
-              <Button to="/quote" variant="accent" className="w-full">
-                Get Quote
-              </Button>
-              <a
-                href={`tel:${site.phone.replace(/\s/g, "")}`}
-                className="text-center text-sm font-medium text-ink-soft hover:text-ink"
-              >
-                Call {site.phone}
-              </a>
+                  <NavLink
+                    to="/cart"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium text-ink-soft transition-colors hover:bg-stone-200/70 hover:text-ink"
+                  >
+                    <span>Cart</span>
+                    {itemCount > 0 && (
+                      <span className="rounded-full bg-brass-500 px-2 py-0.5 text-xs font-semibold text-white">
+                        {itemCount}
+                      </span>
+                    )}
+                  </NavLink>
+
+                  <NavLink
+                    to="/social"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium text-ink-soft transition-colors hover:bg-stone-200/70 hover:text-ink"
+                  >
+                    <span>Instagram &amp; Reels</span>
+                    <span className="text-xs font-semibold text-brass-700">@rp_tiles_araria</span>
+                  </NavLink>
+                </nav>
+              </div>
+
+              {/* Bottom Actions Footer */}
+              <div className="shrink-0 border-t border-stone-200 bg-white p-4 space-y-2.5">
+                <Button
+                  to="/quote"
+                  variant="accent"
+                  onClick={() => setMobileOpen(false)}
+                  className="w-full justify-center rounded-xl py-3 text-sm"
+                >
+                  Get a Quote
+                </Button>
+                <a
+                  href={`tel:${site.phone.replace(/\s/g, "")}`}
+                  className="block text-center text-xs font-medium text-ink-soft hover:text-ink"
+                >
+                  Call {site.phone}
+                </a>
+              </div>
             </div>
-          </div>
-        </div>
-      )}
+          </div>,
+          document.body
+        )}
     </header>
   );
 }
