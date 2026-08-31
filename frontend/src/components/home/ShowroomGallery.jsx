@@ -1,4 +1,4 @@
-import { ArrowRight, MapPin } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Button from "../ui/Button.jsx";
 import { site } from "../../data/site.js";
 import { resolveAsset } from "../../utils/format.js";
@@ -32,14 +32,11 @@ const galleryImages = [
 
 export default function ShowroomGallery() {
   return (
-    <section className="border-t border-stone-200/80 bg-[#f9f8f6] py-20 md:py-28">
+    <section className="bg-[#f9f8f6] pt-8 pb-16 md:pt-12 md:pb-24">
       <div className="container-page">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-brass-300/40 bg-brass-50/60 px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-brass-700">
-              <MapPin size={13} className="text-brass-600" /> Physical Showroom &amp; Yard
-            </span>
-            <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+            <h2 className="font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
               Visit Our Araria Experience Center
             </h2>
             <p className="mt-3 text-base leading-relaxed text-ink-soft">

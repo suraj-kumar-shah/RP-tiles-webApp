@@ -1,7 +1,5 @@
 import { useState } from "react";
-import { ChevronDown, PhoneCall } from "lucide-react";
-import Button from "../ui/Button.jsx";
-import { site } from "../../data/site.js";
+import { ChevronDown } from "lucide-react";
 
 const faqs = [
   {
@@ -44,7 +42,7 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="bg-[#faf9f6] pt-10 pb-16 md:pt-14 md:pb-20">
+    <section className="pt-10 pb-16 md:pt-14 md:pb-20">
       <div className="container-page max-w-4xl">
         <div className="text-center">
           <h2 className="font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
@@ -91,37 +89,6 @@ export default function FAQSection() {
               </div>
             );
           })}
-        </div>
-
-        {/* Quick Contact Card */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm sm:flex-row sm:p-8">
-          <div>
-            <h3 className="font-display text-lg font-semibold text-ink">
-              Have a specific requirement?
-            </h3>
-            <p className="mt-1 text-xs text-ink-soft sm:text-sm">
-              Our material specialists are ready to guide you through slab selection and custom orders.
-            </p>
-          </div>
-          <div className="flex shrink-0 items-center gap-3">
-            <Button
-              href={`tel:${site.phoneRaw}`}
-              variant="primary"
-              size="sm"
-              icon={PhoneCall}
-              className="rounded-md"
-            >
-              Call {site.phone}
-            </Button>
-            <Button
-              to="/contact"
-              variant="outline"
-              size="sm"
-              className="rounded-md"
-            >
-              Contact Us
-            </Button>
-          </div>
         </div>
       </div>
     </section>

@@ -10,7 +10,7 @@ export default function FeaturedProducts() {
   const featured = products.filter((p) => featuredIds.includes(p.id));
 
   return (
-    <section className="container-page py-16 md:py-24">
+    <section className="container-page pt-14 pb-6 md:pt-20 md:pb-10">
       <SectionHeading
         eyebrow="Featured Products"
         title="A Closer Look at Our Showroom Favorites"
