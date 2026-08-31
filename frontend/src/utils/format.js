@@ -6,3 +6,14 @@ export function formatPrice(price, unit) {
   }).format(price);
   return unit ? `${formatted} / ${unit}` : formatted;
 }
+
+export function resolveAsset(url) {
+  if (!url) return "";
+  if (url.startsWith("http://") || url.startsWith("https://") || url.startsWith("data:")) {
+    return url;
+  }
+  const base = import.meta.env.BASE_URL || "/";
+  const cleanBase = base.endsWith("/") ? base : `${base}/`;
+  const cleanUrl = url.startsWith("/") ? url.slice(1) : url;
+  return `${cleanBase}${cleanUrl}`;
+}

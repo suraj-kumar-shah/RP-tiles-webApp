@@ -1,30 +1,31 @@
 import { ArrowRight, MapPin } from "lucide-react";
 import Button from "../ui/Button.jsx";
 import { site } from "../../data/site.js";
+import { resolveAsset } from "../../utils/format.js";
 
 const galleryImages = [
   {
     title: "Marble Slab Yard",
     description: "Browse hundreds of raw and polished natural marble slabs under natural daylight.",
-    image: "/images/hero/hero-marble-yard-1.webp",
+    image: resolveAsset("/images/hero/hero-marble-yard-1.webp"),
     tag: "Stock Yard",
   },
   {
     title: "Granite & Italian Slabs",
     description: "Imported marble and high-grade granite slabs ready for custom fabrication.",
-    image: "/images/hero/hero-granite-slabs-2.webp",
+    image: resolveAsset("/images/hero/hero-granite-slabs-2.webp"),
     tag: "Exotics",
   },
   {
     title: "Indoor Display Gallery",
     description: "Experience modern tile concepts, sanitary ware, and architectural fittings.",
-    image: "/images/hero/hero-marble-display-3.webp",
+    image: resolveAsset("/images/hero/hero-marble-display-3.webp"),
     tag: "Showroom",
   },
   {
     title: "Central Inventory Warehouse",
     description: "Ready stock ready for immediate dispatch across residential and commercial projects.",
-    image: "/images/hero/hero-warehouse-slabs-4.webp",
+    image: resolveAsset("/images/hero/hero-warehouse-slabs-4.webp"),
     tag: "Warehouse",
   },
 ];

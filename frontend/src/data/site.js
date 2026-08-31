@@ -1,7 +1,9 @@
+import { resolveAsset } from "../utils/format.js";
+
 export const site = {
   name: "R.P. Tiles Araria",
   fullName: "R.P. Tiles Araria",
-  logo: "/logo/RPL-navigation-logo.svg",
+  logo: resolveAsset("/logo/RPL-navigation-logo.svg"),
   tagline: "Premium Materials for Beautiful Spaces",
   description:
     "A premium showroom for marble, tiles, sanitary ware, bathroom fittings and architectural hardware for modern homes and commercial spaces.",

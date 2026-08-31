@@ -1,18 +1,19 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { resolveAsset } from "../../utils/format.js";
 
 const BACKGROUND_IMAGES = [
   {
-    url: "/images/hero/hero-showroom-1.webp",
+    url: resolveAsset("/images/hero/hero-showroom-1.webp"),
     alt: "Luxury Italian marble showroom with illuminated slabs",
   },
   {
-    url: "/images/hero/hero-gallery-2.webp",
+    url: resolveAsset("/images/hero/hero-gallery-2.webp"),
     alt: "Designer architectural stone and tile gallery",
   },
   {
-    url: "/images/hero/hero-warehouse-3.webp",
+    url: resolveAsset("/images/hero/hero-warehouse-3.webp"),
     alt: "Organized luxury marble slabs and stone inventory warehouse",
   },
 ];

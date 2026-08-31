@@ -1,11 +1,12 @@
 import { ExternalLink, Play } from "lucide-react";
 import { InstagramIcon } from "../ui/SocialIcons.jsx";
 import { site } from "../../data/site.js";
+import { resolveAsset } from "../../utils/format.js";
 
 const reels = [
   {
     id: 1,
-    image: "/instagram-relles-video-photos/1-insta.webp",
+    image: resolveAsset("/instagram-relles-video-photos/1-insta.webp"),
     link: "https://www.instagram.com/p/DTeuTY1EqSc/",
     title: "Showroom Walkthrough",
     caption: "Rp TIles Bus Stand Araria Bihar @rp_tiles_araria ❤️",
@@ -13,7 +14,7 @@ const reels = [
   },
   {
     id: 2,
-    image: "/instagram-relles-video-photos/2-insta.webp",
+    image: resolveAsset("/instagram-relles-video-photos/2-insta.webp"),
     link: "https://www.instagram.com/p/DSWttGeEsu9/",
     title: "Marble & Tiles Collection",
     caption: "Premium natural marble slabs & vitrified tiles display",
@@ -21,7 +22,7 @@ const reels = [
   },
   {
     id: 3,
-    image: "/instagram-relles-video-photos/3-insta.webp",
+    image: resolveAsset("/instagram-relles-video-photos/3-insta.webp"),
     link: "https://www.instagram.com/p/DTzO46sknUv/",
     title: "Designer Finishes",
     caption: "Exclusive surface textures and architectural fittings",
@@ -29,7 +30,7 @@ const reels = [
   },
   {
     id: 4,
-    image: "/instagram-relles-video-photos/4-insta.webp",
+    image: resolveAsset("/instagram-relles-video-photos/4-insta.webp"),
     link: "https://www.instagram.com/p/DTS1czTkxAk/",
     title: "Luxury Sanitary Ware",
     caption: "Countertop vanities and bathroom accessories showcase",
@@ -37,7 +38,7 @@ const reels = [
   },
   {
     id: 5,
-    image: "/instagram-relles-video-photos/5-insta.webp",
+    image: resolveAsset("/instagram-relles-video-photos/5-insta.webp"),
     link: "https://www.instagram.com/p/DOTSp0_kj2G/",
     title: "Quality & Dispatch",
     caption: "Fresh lot arrivals and direct customer site deliveries",

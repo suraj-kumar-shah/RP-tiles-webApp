@@ -3,7 +3,7 @@ import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 import Button from "../components/ui/Button.jsx";
 import EmptyState from "../components/ui/EmptyState.jsx";
 import { useCart } from "../context/CartContext.jsx";
-import { formatPrice } from "../utils/format.js";
+import { formatPrice, resolveAsset } from "../utils/format.js";
 
 export default function Cart() {
   const { items, updateQuantity, removeFromCart, subtotal } = useCart();
@@ -37,7 +37,7 @@ export default function Cart() {
                 >
                   <div className="h-24 w-24 shrink-0 overflow-hidden rounded-sm bg-stone-100">
                     <img
-                      src={product.images[0]}
+                      src={resolveAsset(product.images[0])}
                       alt={product.name}
                       className="h-full w-full object-cover"
                     />

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Button from "../ui/Button.jsx";
 import Badge from "../ui/Badge.jsx";
 import { useWishlist } from "../../context/WishlistContext.jsx";
-import { formatPrice } from "../../utils/format.js";
+import { formatPrice, resolveAsset } from "../../utils/format.js";
 
 export default function ProductCard({ product }) {
   const { isWishlisted, toggleWishlist } = useWishlist();
@@ -14,7 +14,7 @@ export default function ProductCard({ product }) {
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-stone-100">
         <Link to={`/products/${product.id}`}>
           <img
-            src={product.images[0]}
+            src={resolveAsset(product.images[0])}
             alt={product.name}
             loading="lazy"
             className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"

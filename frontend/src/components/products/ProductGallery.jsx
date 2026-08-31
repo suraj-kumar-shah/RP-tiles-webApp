@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { resolveAsset } from "../../utils/format.js";
 
 export default function ProductGallery({ images, name }) {
   const [active, setActive] = useState(0);
@@ -8,7 +9,7 @@ export default function ProductGallery({ images, name }) {
     <div className="flex flex-col gap-3">
       <div className="aspect-square w-full overflow-hidden rounded-sm border border-stone-200 bg-stone-100">
         <img
-          src={gallery[active]}
+          src={resolveAsset(gallery[active])}
           alt={name}
           className="h-full w-full object-cover"
         />
@@ -26,7 +27,7 @@ export default function ProductGallery({ images, name }) {
                 active === idx ? "border-stone-900" : "border-transparent hover:border-stone-300"
               }`}
             >
-              <img src={img} alt="" className="h-full w-full object-cover" />
+              <img src={resolveAsset(img)} alt="" className="h-full w-full object-cover" />
             </button>
           ))}
         </div>
